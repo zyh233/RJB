@@ -1,8 +1,6 @@
 package cn.cumt.service;
 
 import java.util.List;
-import java.util.Map;
-
 import cn.cumt.dao.RecordDao;
 import cn.cumt.dao.RecordDaoImpl;
 import cn.cumt.entity.Record;
@@ -77,6 +75,12 @@ public class RecordServiceImpl implements RecordService{
 	public void deleteRecord(int uid, int id) {
 		recordDao.deleteRecord(uid, id);
 		
+	}
+	
+	@Override
+	public List<Record> findRecordsByUid(int uid) {
+		
+		return recordDao.findRecordsByUid(uid);
 	}
 
 }

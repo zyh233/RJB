@@ -159,6 +159,20 @@
     <servlet-name>AdminLogoutServlet</servlet-name>
     <servlet-class>cn.cumt.servlet.AdminLogoutServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>QueryReceiveTags</servlet-name>
+    <servlet-class>cn.cumt.servlet.QueryReceiveTags</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>QueryRecords</servlet-name>
+    <servlet-class>cn.cumt.servlet.QueryRecords</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -288,6 +302,14 @@
   <servlet-mapping>
     <servlet-name>AdminLogoutServlet</servlet-name>
     <url-pattern>/AdminLogoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryReceiveTags</servlet-name>
+    <url-pattern>/QueryReceiveTags</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QueryRecords</servlet-name>
+    <url-pattern>/QueryRecords</url-pattern>
   </servlet-mapping>
 
 </web-app>

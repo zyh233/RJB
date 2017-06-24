@@ -1,8 +1,6 @@
 package cn.cumt.service;
 
 import java.util.List;
-import java.util.Map;
-
 import cn.cumt.entity.Record;
 import cn.cumt.exception.InsertRecordException;
 
@@ -22,5 +20,7 @@ public interface RecordService {
 	public List<Integer> queryIds();
 	
 	public void deleteRecord(int uid,int id);
+	
+	public List<Record> findRecordsByUid(int uid);
 	
 }

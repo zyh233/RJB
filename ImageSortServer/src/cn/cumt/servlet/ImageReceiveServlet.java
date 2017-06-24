@@ -32,8 +32,6 @@ public class ImageReceiveServlet extends HttpServlet {
 
 	/**
 	 * 接收图片的处理器
-	 * 
-	 *
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

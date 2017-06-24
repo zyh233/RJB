@@ -29,12 +29,17 @@ public class QueryImagesServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		//°´Ë÷Òý²éÕÒ
-		//String index = request.getParameter("index");
+		String index = request.getParameter("index");
 		HttpSession session = request.getSession();
 		Admin login = (Admin) session.getAttribute("admin");
 		if(login!=null){
+			List<Image> images = null;
 			ImageService service = new ImageServiceImpl();
-			List<Image> images = service.exportImages();
+			if(index.equals("all")){				
+				images = service.exportImages();				
+			}else {
+				images = service.findByIndex(index);
+			}
 			String translate = ImageTranslation.imageTranslate(images);
 			out.write(translate);
 		}else {

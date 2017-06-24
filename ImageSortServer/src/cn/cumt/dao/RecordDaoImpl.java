@@ -3,10 +3,7 @@ package cn.cumt.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import com.mysql.jdbc.PreparedStatement;
 
 import cn.cumt.entity.Record;
@@ -148,6 +145,9 @@ public class RecordDaoImpl extends JDBC implements RecordDao{
 		
 		return false;
 	}
+	/**
+	 * 用户数量
+	 */
 	@Override
 	public int queryUserCount() {
 		String sql = "SELECT COUNT(distinct uid) AS count FROM `record`";
@@ -164,7 +164,9 @@ public class RecordDaoImpl extends JDBC implements RecordDao{
 		return count;
 	}
 	
-	
+	/**
+	 * 图片数量
+	 */
 	@Override
 	public int queryImageCount() {
 		String sql = "SELECT COUNT(distinct id) AS count FROM `record`";		
@@ -182,7 +184,7 @@ public class RecordDaoImpl extends JDBC implements RecordDao{
 	}
 	
 	/**
-	 * 查找用户id-图片数量对
+	 * 查找用户-图片数量组
 	 */
 	@Override
 	public List<Integer> user2ImageNum() {	
@@ -207,7 +209,9 @@ public class RecordDaoImpl extends JDBC implements RecordDao{
 		}
 		return ids;
 	}
-	
+	/**
+	 * 查找用户集
+	 */
 	@Override
 	public List<Integer> queryUids() {
 		List<Integer> uids = new ArrayList<>();
@@ -227,7 +231,7 @@ public class RecordDaoImpl extends JDBC implements RecordDao{
 	}
 	/**
 	 * 
-	 * @return 返回
+	 * @return 图片-用户数目组
 	 */
 	@Override
 	public List<Integer> image2UserNum() {	
@@ -254,6 +258,9 @@ public class RecordDaoImpl extends JDBC implements RecordDao{
 		}
 		return uids;
 	}
+	/**
+	 * 查找图片集
+	 */
 	@Override
 	public List<Integer> queryIds(){
 		List<Integer> ids = new ArrayList<>();
@@ -288,6 +295,28 @@ public class RecordDaoImpl extends JDBC implements RecordDao{
 			e.printStackTrace();
 		}
 		
+	}
+	/**
+	 * 查找指定用户的图片记录
+	 */
+	@Override
+	public List<Record> findRecordsByUid(int uid) {
+		List<Record> records = new ArrayList<>();
+		Record record = null;
+		String sql = "SELECT id,tags FROM `record` WHERE uid='"+uid+"'";		
+		try {
+			ResultSet rs = statement.executeQuery(sql);
+			while (rs.next()) {
+				record = new Record();
+				record.setId(rs.getInt("id"));
+				record.setTags(rs.getString("tags"));
+				records.add(record);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return records;
 	}
 
 	

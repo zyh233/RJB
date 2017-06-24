@@ -25,15 +25,12 @@ public class ImageDistributeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
-		
+		PrintWriter out = response.getWriter();		
 		ImageService imageService = new ImageServiceImpl();
 		UserService service = new UserServiceImpl();
 		String uid = request.getParameter("uid");
-		String hobbies = service.getHobbies(Integer.parseInt(uid));
-		
-		List<Image> images = imageService.findAllImage();
-		
+		String hobbies = service.getHobbies(Integer.parseInt(uid));		
+		List<Image> images = imageService.findAllImage();		
 		JSONObject json = null;
 		JSONArray jsons = new JSONArray();
 		JSONObject parm = new JSONObject();

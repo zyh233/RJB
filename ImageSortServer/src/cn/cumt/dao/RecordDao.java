@@ -1,12 +1,11 @@
 package cn.cumt.dao;
 
 import java.util.List;
-import java.util.Map;
-
 import cn.cumt.entity.Record;
 
 public interface RecordDao {
 	public List<Record> queryRecordById(int uid);
+	
 	public int addRecords(List<Record> list);
 	public boolean addRecord(Record record);
 	public boolean findRecord(int uid,int id);
@@ -28,4 +27,7 @@ public interface RecordDao {
 	public List<Integer> queryIds();
 	
 	public void deleteRecord(int uid,int id);
+	
+	public List<Record> findRecordsByUid(int uid);
+	
 }

@@ -32,10 +32,13 @@ public class LoginServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		UserService userService=new UserServiceImpl();
 		User user=new User();
+		HttpSession session = request.getSession();
 		try {
 			BeanUtils.populate(user, request.getParameterMap());
-			User user2=userService.Login(user);
+			User user2=userService.Login(user);			
 			if(user2!=null){
+				
+				session.setAttribute("user", user2);
 				Map<String,String> map = new HashMap<>();
 				map.put("username",user2.getUsername());
 				map.put("uid", user2.getUid()+"");				
@@ -45,8 +48,7 @@ public class LoginServlet extends HttpServlet {
 				JSONObject json=JSONObject.fromObject(map);
 				JSONObject params=new JSONObject();
 				params.put("user", json);
-				out.write(params.toString());
-				
+				out.write(params.toString());				
 				synchronized (obj) {
 					count++;
 				}
@@ -59,11 +61,9 @@ public class LoginServlet extends HttpServlet {
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
-		HttpSession session = request.getSession();
 		session.setAttribute("count", count);
 		System.out.println(count);
 		out.close();
-		//response.setHeader("refresh", "3;URL=/ImageSortServer/ImageDistributeServlet");
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
