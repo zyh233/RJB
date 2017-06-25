@@ -15,7 +15,8 @@ public class AddTagUtil {
 	public static List<Tag> addTag(String s,List<Tag> tags){
 		if(tags!=null){
 			for (int i = 0; i < tags.size(); i++) {
-				if(s.equals(tags.get(i).getTag())){
+				String string = tags.get(i).getTag();
+				if(s.equals(string)||TagsMergeUtil.singleMerge(string, s)>0.4){
 					int weights = tags.get(i).getWeights()+1;
 					tags.get(i).setWeights(weights);
 					return tags;

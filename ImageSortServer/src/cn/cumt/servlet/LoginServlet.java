@@ -45,6 +45,7 @@ public class LoginServlet extends HttpServlet {
 				map.put("phone", user2.getPhone());
 				map.put("email", user2.getEmail());
 				map.put("hobbies", user2.getHobbies());
+				map.put("score", user2.getScore()+"");
 				JSONObject json=JSONObject.fromObject(map);
 				JSONObject params=new JSONObject();
 				params.put("user", json);

@@ -10,6 +10,7 @@ public class User implements Serializable{
 	private String phone;
 	private String email;
 	private String hobbies;
+	private int score;
 	public User() {
 		super();
 	}
@@ -66,14 +67,24 @@ public class User implements Serializable{
 	public void setHobbies(String hobbies) {
 		this.hobbies = hobbies;
 	}
+	
+	
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
 
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", username=" + username + ", password="
 				+ password + ", phone=" + phone + ", email=" + email
-				+ ", hobbies=" + hobbies + "]";
+				+ ", hobbies=" + hobbies + ", score=" + score + "]";
 	}
 
+	
 	
 	
 }

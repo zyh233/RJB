@@ -11,7 +11,9 @@ import cn.cumt.entity.User;
 import cn.cumt.utils.JDBC;
 
 public class UserDaoImpl extends JDBC implements UserDao{
-
+	/**
+	 * 用户登录
+	 */
 	@Override
 	public User login(User user) {
 		User user2=null;
@@ -29,12 +31,14 @@ public class UserDaoImpl extends JDBC implements UserDao{
 				String phone=rs.getString("phone");
 				String email=rs.getString("email");
 				String hobbies = rs.getString("hobbies");
+				int score = rs.getInt("score");
 				user2.setUid(uid);
 				user2.setUsername(username);
 				user2.setPassword(password);
 				user2.setPhone(phone);
 				user2.setEmail(email);
 				user2.setHobbies(hobbies);
+				user2.setScore(score);
 			}
 			pStatement.close();
 		} catch (SQLException e) {
@@ -42,7 +46,9 @@ public class UserDaoImpl extends JDBC implements UserDao{
 		}
 		return user2;
 	}
-
+	/**
+	 * 添加用户
+	 */
 	public boolean addUser(User user) {
 		String username=user.getUsername();
 		String password=user.getPassword();
@@ -66,7 +72,9 @@ public class UserDaoImpl extends JDBC implements UserDao{
 		}
 		return flag;
 	}
-
+	/**
+	 * 按用户名查找用户
+	 */
 	@Override
 	public User findByName(String name) {
 		User user=null;
@@ -97,7 +105,9 @@ public class UserDaoImpl extends JDBC implements UserDao{
 		
 		return user;
 	}
-
+	/**
+	 * 删除用户
+	 */
 	@Override
 	public void deleteUser(int uid) {
 		String sql="DELETE FROM `user` WHERE (`uid`=?)";
@@ -111,7 +121,10 @@ public class UserDaoImpl extends JDBC implements UserDao{
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * 查找所有用户
+	 */
 	@Override
 	public List<User> findAll() {
 		List<User> list=new ArrayList<>();
@@ -232,6 +245,23 @@ public class UserDaoImpl extends JDBC implements UserDao{
 			e.printStackTrace();
 		}
 		return count;
+	}
+
+	/**
+	 * 更新用户积分
+	 */
+	@Override
+	public void updateScore(int uid, int score) {
+		String sql="UPDATE `user` SET `score`=? WHERE `uid`=?";		
+		try {
+			PreparedStatement pStatement=(PreparedStatement) connection.prepareStatement(sql);
+			pStatement.setInt(1, score);
+			pStatement.setInt(2, uid);
+			pStatement.executeUpdate();
+			pStatement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
 	}
 	
 }

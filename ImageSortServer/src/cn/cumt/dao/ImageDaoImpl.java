@@ -55,7 +55,7 @@ public class ImageDaoImpl extends JDBC implements ImageDao{
 			ResultSet resultSet=statement.executeQuery(sql);
 			if(resultSet.next()){
 				String s=resultSet.getString(1);
-				if(s==null){
+				if(s==null||s.equals("")){
 					return null;
 				}
 				String[] split = s.split(",");

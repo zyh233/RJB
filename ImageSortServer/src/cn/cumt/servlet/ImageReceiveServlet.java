@@ -63,7 +63,7 @@ public class ImageReceiveServlet extends HttpServlet {
 			System.out.println(records.toString());
 			//-----------------------------------------------------------
 			//添加多条记录
-			if(records.size()>5)
+			if(records.size()>=3)
 				rs.addRecords(records);
 			//添加一条记录
 			//rs.addRecord(record);

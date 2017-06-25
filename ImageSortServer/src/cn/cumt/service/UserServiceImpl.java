@@ -68,4 +68,10 @@ public class UserServiceImpl implements UserService{
 		return userDao.userCount();
 	}
 
+	@Override
+	public void updateScore(int uid, int score) {
+		userDao.updateScore(uid, score);
+		
+	}
+
 }

@@ -15,11 +15,9 @@ public class RecordServiceImpl implements RecordService{
 	}
 	@Override
 	public void addRecords(List<Record> list) throws InsertRecordException {
-		int num = recordDao.addRecords(list);
-		if(num!=list.size()){
-			throw new InsertRecordException((list.size()-num)+"记录插入失败");
-		}
-		
+		for (Record record : list) {
+			addRecord(record);
+		}	
 	}
 	/**
 	 * 添加一条记录

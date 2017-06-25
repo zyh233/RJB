@@ -20,5 +20,7 @@ public interface UserService {
 	public void deleteUser(int uid);
 	
 	public int userCount();
+	
+	public void updateScore(int uid,int score);
 		
 }

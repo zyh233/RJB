@@ -45,9 +45,12 @@ public class Record {
 	public void setTags(String tags) {
 		this.tags = tags;
 	}
+
+
 	@Override
 	public String toString() {
-		return "Record [name=" + name + ", tags=" + tags + "]";
+		return "Record [uid=" + uid + ", id=" + id + ", name=" + name
+				+ ", tags=" + tags + "]";
 	}
 	
 	

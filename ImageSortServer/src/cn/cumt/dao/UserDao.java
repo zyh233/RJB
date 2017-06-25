@@ -16,4 +16,7 @@ public interface UserDao {
 	public void setHobbies(int uid,String hobbies);
 	
 	public int userCount();
+	
+	
+	public void updateScore(int uid,int score);
 }
