@@ -52,8 +52,7 @@ public class AddImageServlet extends HttpServlet {
 		
 		        // 3、判断用户的表单提交方式是不是multipart/form-data  
 		        boolean bb = upload.isMultipartContent(request);  
-		        if (!bb) { 
-		        	System.out.println("sdddd");
+		        if (!bb) { 		        	
 		            return;  
 		        }  
 		        // 4、是：解析request对象的正文内容List<FileItem>  
@@ -103,6 +102,7 @@ public class AddImageServlet extends HttpServlet {
 		       }
 		       int count = service.addImages(list);
 		      out1.write("success:"+count);
+		      request.getRequestDispatcher("/admin/uploadSuccess.jsp").forward(request, response);
         }catch(FileUploadBase.FileSizeLimitExceededException e){  
         	
 	        request.setAttribute("message", "单个文件大小不能超出5M");  

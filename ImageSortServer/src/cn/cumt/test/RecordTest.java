@@ -65,6 +65,13 @@ public class RecordTest {
 		dao.deleteRecord(5, 5);;
 	}
 	
+	@Test
+	public void testQueryTag(){
+		RecordDao dao = new RecordDaoImpl();
+		String tag = dao.queryTag(2, 1);
+		System.out.println(tag);
+	}
+	
 	
 
 }

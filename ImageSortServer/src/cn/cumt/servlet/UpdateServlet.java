@@ -21,7 +21,6 @@ public class UpdateServlet extends HttpServlet {
 
 	/**
 	 * 用户更新类
-	 *
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -46,6 +45,7 @@ public class UpdateServlet extends HttpServlet {
 		
 		if(flag){
 			out.write("success");
+			response.sendRedirect(getServletContext().getContextPath()+"/admin/QueryUsers");
 		}
 		out.close();	
 	}

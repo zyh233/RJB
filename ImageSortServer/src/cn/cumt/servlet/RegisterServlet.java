@@ -45,6 +45,7 @@ public class RegisterServlet extends HttpServlet {
 		}
 		if(flag)
 			out.write("success");
+			response.sendRedirect(getServletContext().getContextPath()+"/admin/QueryUsers");		 	
 		out.close();
 		
 	}

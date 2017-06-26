@@ -171,6 +171,20 @@
     <servlet-name>QueryRecords</servlet-name>
     <servlet-class>cn.cumt.servlet.QueryRecords</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UpdateScore</servlet-name>
+    <servlet-class>cn.cumt.servlet.UpdateScore</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UpdateTag</servlet-name>
+    <servlet-class>cn.cumt.servlet.UpdateTag</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -310,6 +324,14 @@
   <servlet-mapping>
     <servlet-name>QueryRecords</servlet-name>
     <url-pattern>/QueryRecords</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateScore</servlet-name>
+    <url-pattern>/UpdateScore</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateTag</servlet-name>
+    <url-pattern>/UpdateTag</url-pattern>
   </servlet-mapping>
 
 </web-app>

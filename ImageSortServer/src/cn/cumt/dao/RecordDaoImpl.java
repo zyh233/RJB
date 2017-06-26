@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.mysql.jdbc.PreparedStatement;
 
 import cn.cumt.entity.Record;
@@ -317,6 +318,27 @@ public class RecordDaoImpl extends JDBC implements RecordDao{
 			e.printStackTrace();
 		}
 		return records;
+	}
+	/**
+	 * 查询指定的记录的标签
+	 */
+	@Override
+	public String queryTag(int uid, int id) {
+		String tag = null;
+		String sql = "SELECT tags FROM `record` WHERE uid=? AND id=?";
+		try {
+			PreparedStatement pStatement = (PreparedStatement) connection.prepareStatement(sql);
+			pStatement.setInt(1, uid);
+			pStatement.setInt(2, id);
+			ResultSet rs = pStatement.executeQuery();
+			if(rs.next()){
+				tag = rs.getString("tags");
+			}
+			pStatement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+		return tag;
 	}
 
 	

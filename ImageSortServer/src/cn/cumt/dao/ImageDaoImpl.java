@@ -31,7 +31,7 @@ public class ImageDaoImpl extends JDBC implements ImageDao{
 				image.setName(name);
 				String s=resultSet.getString("tags");
 				image.setTags(s);
-				String url="http://zyhqqh.cn:8080/ImageSortServer/images/"+name;
+				String url="http://114.115.142.214:8080/ImageSortServer/images/"+name;
 				image.setUrl(url);
 				String date = resultSet.getString("finish_time");
 				image.setDate(date);

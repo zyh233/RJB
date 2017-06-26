@@ -30,4 +30,6 @@ public interface RecordDao {
 	
 	public List<Record> findRecordsByUid(int uid);
 	
+	public String queryTag(int uid,int id);
+	
 }

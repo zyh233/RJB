@@ -1,6 +1,7 @@
 package cn.cumt.service;
 
 import java.util.List;
+
 import cn.cumt.dao.RecordDao;
 import cn.cumt.dao.RecordDaoImpl;
 import cn.cumt.entity.Record;
@@ -79,6 +80,18 @@ public class RecordServiceImpl implements RecordService{
 	public List<Record> findRecordsByUid(int uid) {
 		
 		return recordDao.findRecordsByUid(uid);
+	}
+	@Override
+	public String queryTag(int uid, int id) {
+		
+		return recordDao.queryTag(uid, id);
+	}
+	
+	
+	@Override
+	public boolean updateRecord(Record record) {
+		
+		return recordDao.updateRecord(record);
 	}
 
 }

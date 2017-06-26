@@ -11,8 +11,9 @@ public class RecommendImage {
 		List<Image> list =new ArrayList<>();
 		String[] hobby = hobbies.split(",");
 		boolean flag = false;
-		int start = (int)(Math.random()*images.size()-5);
+		int start = (int)(Math.random()*images.size());
 		int end = (start+20)<images.size()?(start+20):images.size();
+		System.out.println(start+"----------"+end);
 		for(int i = start;i<end;i++){
 			flag = false;
 			String tags = images.get(i).getTags();
