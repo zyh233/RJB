@@ -22,5 +22,7 @@ public interface UserService {
 	public int userCount();
 	
 	public void updateScore(int uid,int score);
+	
+	public boolean upadte(User user);
 		
 }

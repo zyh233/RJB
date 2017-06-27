@@ -74,4 +74,10 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
+	@Override
+	public boolean upadte(User user) {
+		
+		return userDao.upadte(user);
+	}
+
 }

@@ -19,4 +19,6 @@ public interface UserDao {
 	
 	
 	public void updateScore(int uid,int score);
+	
+	public boolean upadte(User user);
 }

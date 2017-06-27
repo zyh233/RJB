@@ -264,4 +264,32 @@ public class UserDaoImpl extends JDBC implements UserDao{
 		}		
 	}
 	
+	/**
+	 * 更新用户部分信息
+	 */
+	@Override
+	public boolean upadte(User user) {
+		String sql="UPDATE `user` SET `password`=?,`email`=?,`hobbies`=? WHERE `uid`=?";
+		boolean flag = false;
+		String password=user.getPassword();
+		String email=user.getEmail();
+		String hobbies = user.getHobbies();
+		int uid =user.getUid();
+		try {
+			PreparedStatement pStatement=(PreparedStatement) connection.prepareStatement(sql);
+			pStatement.setString(1, password);
+			pStatement.setString(2, email);
+			pStatement.setString(3, hobbies);
+			pStatement.setInt(4, uid);
+			int i=pStatement.executeUpdate();
+			if(i!=0){
+				flag = true;
+			}
+			pStatement.close();
+		} catch (SQLException e) {		
+			e.printStackTrace();
+		}
+		return flag;
+	}
+	
 }

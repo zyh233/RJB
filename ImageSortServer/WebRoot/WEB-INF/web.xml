@@ -183,6 +183,13 @@
     <servlet-name>UpdateTag</servlet-name>
     <servlet-class>cn.cumt.servlet.UpdateTag</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UpdateUser</servlet-name>
+    <servlet-class>cn.cumt.servlet.UpdateUser</servlet-class>
+  </servlet>
+
 
 
 
@@ -332,6 +339,10 @@
   <servlet-mapping>
     <servlet-name>UpdateTag</servlet-name>
     <url-pattern>/UpdateTag</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateUser</servlet-name>
+    <url-pattern>/UpdateUser</url-pattern>
   </servlet-mapping>
 
 </web-app>
