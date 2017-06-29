@@ -1,4 +1,4 @@
-package cn.cumt.servlet;
+package cn.cumt.admin.servlet;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -23,9 +23,9 @@ import cn.cumt.entity.Image;
 import cn.cumt.service.ImageService;
 import cn.cumt.service.ImageServiceImpl;
 
-@SuppressWarnings("serial")
-public class AddImageServlet extends HttpServlet {
+public class AddImage extends HttpServlet {
 
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -99,9 +99,9 @@ public class AddImageServlet extends HttpServlet {
 		                list.add(image);
 		                item.delete();//删除临时文件  
 		            }  
-		       }
-		       int count = service.addImages(list);
-		      out1.write("success:"+count);		     
+		       }	
+		       service.addImages(list);
+		      request.getRequestDispatcher("/admin/uploadSuccess.jsp").forward(request, response);
         }catch(FileUploadBase.FileSizeLimitExceededException e){  
         	
 	        request.setAttribute("message", "单个文件大小不能超出5M");  
@@ -111,9 +111,10 @@ public class AddImageServlet extends HttpServlet {
 	        e.printStackTrace();  
 	        request.setAttribute("message", "上传失败");  
         }  
-}  
+		
+	}
 
-
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

@@ -6,6 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,8 +37,7 @@ public class LoginServlet extends HttpServlet {
 		try {
 			BeanUtils.populate(user, request.getParameterMap());
 			User user2=userService.Login(user);			
-			if(user2!=null){
-				
+			if(user2!=null){				
 				session.setAttribute("user", user2);
 				Map<String,String> map = new HashMap<>();
 				map.put("username",user2.getUsername());
@@ -62,7 +62,8 @@ public class LoginServlet extends HttpServlet {
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
-		session.setAttribute("count", count);
+		ServletContext application = getServletContext();
+		application.setAttribute("count", count);
 		System.out.println(count);
 		out.close();
 	}

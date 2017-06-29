@@ -209,8 +209,13 @@
 				],
 			function image2UserNum(et){						
 				var myChart = et.init(document.getElementById('image2UserNum'));
-				var ids = '<%=session.getAttribute("ids")%>';
-				var image2UserNum = '<%=session.getAttribute("image2UserNum")%>';
+							
+				var json = '<%=session.getAttribute("array")%>';
+				json1 = eval("(" + json + ")");				
+				
+				var json2 = '<%=session.getAttribute("array2")%>';
+				json3 = eval("(" + json2 + ")");				
+				
 				
 				option = {
 					    title : {
@@ -235,7 +240,7 @@
 					        {
 					        	name : '图片id',
 					            type : 'category',
-					            data : ids
+					            data :json1
 					        }
 					    ],
 					    yAxis : [
@@ -249,7 +254,7 @@
 					        {
 					            name:'标记次数',
 					            type:'bar',
-					            data:image2UserNum,				            
+					            data:json3,				            
 					            markLine : {
 					                data : [
 					                    {type : 'average', name : '平均值'}

@@ -13,7 +13,6 @@ public class RecommendImage {
 		boolean flag = false;
 		int start = (int)(Math.random()*images.size());
 		int end = (start+20)<images.size()?(start+20):images.size();
-		System.out.println(start+"----------"+end);
 		for(int i = start;i<end;i++){
 			flag = false;
 			String tags = images.get(i).getTags();
@@ -30,8 +29,7 @@ public class RecommendImage {
 					}
 					if(flag){
 						break;
-					}
-					
+					}					
 				}
 			}				
 		}

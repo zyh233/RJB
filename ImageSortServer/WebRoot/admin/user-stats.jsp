@@ -207,9 +207,13 @@
 				'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
 			],
 		function user2ImageNum(et){						
-			var myChart = et.init(document.getElementById('user2ImageNum'));
-			var uids = '<%=session.getAttribute("uids")%>';
-			var user2ImageNum = '<%=session.getAttribute("user2ImageNum")%>';
+			var myChart = et.init(document.getElementById('user2ImageNum'));			
+			
+			var json = '<%=session.getAttribute("array")%>';
+			json1 = eval("(" + json + ")");		
+			
+			var json2 = '<%=session.getAttribute("array2")%>';
+			json3 = eval("(" + json2 + ")");
 			
 			option = {
 				    title : {
@@ -234,7 +238,10 @@
 				        {
 				        	name : '用户id',
 				            type : 'category',
-				            data : uids
+				            data :json1
+				            	
+				            	
+				            	
 				        }
 				    ],
 				    yAxis : [
@@ -248,7 +255,7 @@
 				        {
 				            name:'图片数量',
 				            type:'bar',
-				            data:user2ImageNum,				            
+				            data:json3,				            
 				            markLine : {
 				                data : [
 				                    {type : 'average', name : '平均值'}

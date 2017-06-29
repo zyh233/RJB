@@ -2,12 +2,14 @@ package cn.cumt.admin.servlet;
 
 import java.io.IOException;
 import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.sf.json.JSONArray;
 import cn.cumt.entity.User2Image;
 import cn.cumt.service.CascadeService;
 import cn.cumt.service.RecordService;
@@ -29,8 +31,13 @@ public class UserTag extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("queryUserCount", queryUserCount);
-		session.setAttribute("uids", uids);
-		session.setAttribute("user2ImageNum", user2ImageNum);
+		
+		JSONArray array = JSONArray.fromObject(uids);
+		JSONArray array2 = JSONArray.fromObject(user2ImageNum);
+		
+		session.setAttribute("array", array);
+		session.setAttribute("array2", array2);
+		
 		session.setAttribute("user2Image", user2Image);
 		response.sendRedirect(getServletContext().getContextPath()+"/admin/user-stats.jsp");
 		

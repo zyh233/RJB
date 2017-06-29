@@ -37,8 +37,7 @@ public class HobbiesUtils {
 			}
 			sb.append(s);
 			return sb.toString();
-		}		
-		
+		}				
 	}
 	public static String adjustSqe(String[] hobby,int i){
 		String temp = hobby[i];
@@ -52,8 +51,7 @@ public class HobbiesUtils {
 				sb.append(hobby[j]);
 			else
 				sb.append(hobby[i]+",");
-		}
-		
+		}		
 		return sb.toString();		
 	}
 

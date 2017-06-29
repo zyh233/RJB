@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import cn.cumt.entity.User2Image;
 import cn.cumt.service.CascadeService;
 import cn.cumt.service.RecordService;
@@ -28,19 +30,21 @@ public class ImageTag extends HttpServlet {
 		int queryImageCount = service.queryImageCount();
 		
 		List<Integer> ids = service.queryIds();
-		//System.out.println(ids.toString());
 		List<Integer> image2UserNum = service.image2UserNum();
-		//System.out.println(image2UserNum.toString());
 		
 		CascadeService cService = new CascadeService();
 		List<User2Image> image2User = cService.image2User();
 		
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("queryImageCount", queryImageCount);
-		session.setAttribute("ids", ids);
-		session.setAttribute("image2UserNum", image2UserNum);
+		session.setAttribute("queryImageCount", queryImageCount);				
+		JSONArray array = JSONArray.fromObject(ids);
+		JSONArray array2 = JSONArray.fromObject(image2UserNum);
+		session.setAttribute("array", array);
+		session.setAttribute("array2", array2);
 		session.setAttribute("image2User", image2User);
+		
+		
 		
 		response.sendRedirect(getServletContext().getContextPath()+"/admin/stats.jsp");
 	

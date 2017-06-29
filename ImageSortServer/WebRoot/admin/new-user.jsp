@@ -79,7 +79,7 @@
 			<div class="page-header">
 				<h1>新用户 <small>用户添加</small></h1>
 			</div>
-			<form class="form-horizontal" action="${ pageContext.request.contextPath }/RegisterServlet" method="post">
+			<form class="form-horizontal" action="${ pageContext.request.contextPath }/admin/AddUser" method="post">
 				<fieldset>
 					<div class="control-group">
 						<label class="control-label" for="username">用户名</label>

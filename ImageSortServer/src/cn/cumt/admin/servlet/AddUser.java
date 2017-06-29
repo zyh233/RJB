@@ -1,4 +1,4 @@
-package cn.cumt.servlet;
+package cn.cumt.admin.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,24 +16,20 @@ import cn.cumt.exception.UserRepeatException;
 import cn.cumt.service.UserService;
 import cn.cumt.service.UserServiceImpl;
 
-@SuppressWarnings("serial")
-public class RegisterServlet extends HttpServlet {
+public class AddUser extends HttpServlet {
 
-	/**
-	 * 用户注册处理类
-	 * @author 永红
-	 */
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		response.setContentType("text/html;charset=utf-8");
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("utf-8");	
 		PrintWriter out = response.getWriter();
 		User user=new User();
 		boolean flag=false;
 		UserService userService = new UserServiceImpl();
 		try {
-			BeanUtils.populate(user, request.getParameterMap());
-			System.out.println(user);
+			BeanUtils.populate(user, request.getParameterMap());			
 			flag=userService.addUser(user);
 		} catch (UserRepeatException e) {
 			out.write(e.getMessage());
@@ -43,13 +39,11 @@ public class RegisterServlet extends HttpServlet {
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
-		if(flag)
-			out.write("success");		 	
-		out.close();
-		
+		if(flag)			
+			response.sendRedirect(getServletContext().getContextPath()+"/admin/QueryUsers");		 			
 	}
 
-
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

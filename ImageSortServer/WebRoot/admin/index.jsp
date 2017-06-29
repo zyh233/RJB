@@ -119,7 +119,7 @@
 	  	var userCount = '<%=session.getAttribute("userCount")%>';
 	  	var imageCount = '<%=session.getAttribute("imageCount")%>';
 	  	var adminCount = '<%=session.getAttribute("adminCount")%>';
-	  	var count = '<%=session.getAttribute("count")%>';
+	  	var count = '<%=application.getAttribute("count")%>';
         require.config({
             paths: {
                 echarts: 'http://echarts.baidu.com/build/dist'

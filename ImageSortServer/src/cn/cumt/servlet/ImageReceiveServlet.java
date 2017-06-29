@@ -42,13 +42,9 @@ public class ImageReceiveServlet extends HttpServlet {
 		RecordService rs = new RecordServiceImpl();
 		ImageService is = new ImageServiceImpl();
 		UserService us = new UserServiceImpl();
-		Record record = new Record();
-		
-		
+		Record record = new Record();				
 		try {
-			BeanUtils.populate(record, request.getParameterMap());
-			
-			//---------------------------------------------------------
+			BeanUtils.populate(record, request.getParameterMap());	
 			List<Record> records = null;
 			HttpSession session = request.getSession();
 			Object obj = session.getAttribute("records");
@@ -60,13 +56,10 @@ public class ImageReceiveServlet extends HttpServlet {
 			records.add(record);
 			session.setAttribute("records", records);
 			records = (List<Record>) session.getAttribute("records");
-			System.out.println(records.toString());
 			//-----------------------------------------------------------
 			//添加多条记录
 			if(records.size()>=3)
-				rs.addRecords(records);
-			//添加一条记录
-			//rs.addRecord(record);
+				rs.addRecords(records);		
 			//更新用户爱好
 			int uid = record.getUid();
 			String s = record.getTags();
@@ -80,7 +73,7 @@ public class ImageReceiveServlet extends HttpServlet {
 			//更新图片标签
 			int id = record.getId();
 			List<Tag> tags = is.findTagsById(id);
-			if(tags==null||tags.size()<6){
+			if(tags==null||tags.size()<4){
 				List<Tag> list = AddTagUtil.addTag(s, tags);
 				String str = TagsToString.tagsToString(list);
 				is.updateImageTags(str, id, DateFormat.getDate());

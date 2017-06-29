@@ -86,7 +86,7 @@
 				<h1>导入图片</h1>
 			</div>
 
-			<form name="xx" action="${ pageContext.request.contextPath }/AddImageServlet" method="post" enctype="multipart/form-data">
+			<form name="xx" action="${ pageContext.request.contextPath }/admin/AddImage" method="post" enctype="multipart/form-data">
 				<table id="tb" border="1" class="table table-striped table-bordered table-condensed">
 					<tr>
 						<td>File</td>

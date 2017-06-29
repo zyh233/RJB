@@ -42,8 +42,14 @@ public class UpdateUser extends HttpServlet {
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute("user");		
 			if(user!=null){
-				if(user1.getPassword()==null){
+				if(user1.getPassword()==""){
 					user1.setPassword(user.getPassword());
+				}
+				if(user1.getEmail()==null){
+					user1.setEmail(user.getEmail());
+				}
+				if(user1.getHobbies()==null){
+					user1.setHobbies(user.getHobbies());
 				}
 				int uid = user.getUid();
 				user1.setUid(uid);

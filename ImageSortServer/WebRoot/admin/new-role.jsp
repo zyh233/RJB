@@ -83,7 +83,7 @@
 			<div class="page-header">
 				<h1>新管理员 <small>添加一个管理员</small></h1>
 			</div>
-			<form class="form-horizontal" action="${ pageContext.request.contextPath }/AdminAddServlet" method="post">
+			<form class="form-horizontal" action="${ pageContext.request.contextPath }/admin/AddAdmin" method="post">
 				<fieldset>
 					<div class="control-group">
 						<label class="control-label" for="name">名称</label>

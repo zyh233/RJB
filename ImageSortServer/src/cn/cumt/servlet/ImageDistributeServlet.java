@@ -65,19 +65,15 @@ public class ImageDistributeServlet extends HttpServlet {
 				json.put("tags", image.getTags());
 				json.put("url", image.getUrl());
 				jsons.add(json);				
-			}
-			
+			}			
 		}
 		parm.put("images", jsons);
 		out.write(parm.toString());
 		out.close();
-		System.out.println(request.getSession().getAttribute("count"));
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		doGet(request, response);
 	}
-
 }
